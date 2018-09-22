@@ -1,13 +1,16 @@
 import axios from 'axios';
+import {Dispatch} from 'redux';
+
+import {
+  API_KEY,
+  API_URL,
+  IMAGE_PER_PAGE,
+  REQUEST_METHOD
+} from "../../utils/UrlBuilder";
 
 export const FETCH_IMAGES = 'FETCH_IMAGES';
 
-
-// const API_URL = 'https://api.flickr.com/services/rest/?method=flickr.interestingness.getList\n' +
-//   '&api_key=44376a3002624e5347abb9c842a0da30&format=json&extras=date_taken&extras=owner_name';
-
 // TODO specify images type
-
 export const fetchImages = (images: any) => {
   return {
     type: FETCH_IMAGES,
@@ -16,11 +19,22 @@ export const fetchImages = (images: any) => {
 };
 
 // helper function make api call to get all images.
-export const handleFetchImages = (dispatch: any) => {
-  return axios.get(" https://api.flickr.com/services/rest/?method=flickr.interestingness.getList\n" +
-    "&api_key=44376a3002624e5347abb9c842a0da30&format=json")
+export const handleFetchImages = (dispatch: Dispatch) => {
+  return axios.get(API_URL, {
+      params: {
+        method: REQUEST_METHOD,
+        api_key: API_KEY,
+        format: 'json',
+        extras: 'description,url_c,url_n,tags,views,date_taken',
+        per_page: IMAGE_PER_PAGE,
+        page: 1,
+        nojsoncallback: 1,
+      }
+    }
+  )
     .then(response => {
-      dispatch(fetchImages(response.data))
+      console.log(response);
+      dispatch(fetchImages(response.data.photos.photo))
     })
     .catch(error => {
       throw(error);

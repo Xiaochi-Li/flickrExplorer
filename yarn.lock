@@ -55,7 +55,7 @@
     "@types/prop-types" "*"
     csstype "^2.2.0"
 
-"@types/redux-thunk@^2.1.0":
+"@types/redux-thunk@^2.3.0":
   version "2.1.32"
   resolved "http://registry.npmjs.org/@types/redux-thunk/-/redux-thunk-2.1.32.tgz#27fac368ced9ea170bf15e5fa4a21d9201f73102"
   dependencies:
