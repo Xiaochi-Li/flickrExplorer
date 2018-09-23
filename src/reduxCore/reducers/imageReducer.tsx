@@ -1,6 +1,6 @@
 import {FETCH_IMAGES} from "../actions/imageActions";
 
-export default function usersReducer(state = {}, action: any) {
+export default function imagesReducer(state = {images: []}, action: any) {
   switch (action.type) {
     case FETCH_IMAGES:
       const {images} = action;
@@ -31,6 +31,6 @@ function extractImagesInfo(images: any) {
   return extractedImages;
 }
 
-function extractTags(tags:string){
+function extractTags(tags: string) {
   return tags.split(" ");
 }

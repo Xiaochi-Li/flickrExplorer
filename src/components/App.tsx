@@ -1,29 +1,23 @@
 import * as React from 'react';
-import { connect } from "react-redux";
 
-// import {InterfaceDispatchFunctions} from "../DataType/imageDataType";
+import { Layout } from 'antd';
+
+import {ExplorePage} from "./ExplorePage/ExplorePage";
+import {FlickrHeader} from "./FlickrHeader";
 
 
-// import { handleFetchImages} from "../reduxCore/actions/imageActions";
-
-// @ts-ignore
+// TODO define type or refactor to SFC
 class App extends React.Component {
-  // public componentWillMount(){
-  //   this.props.dispatch(handleFetchImages);
-  // }
-
   public render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
+        <Layout>
+          <FlickrHeader/>
+        <ExplorePage/>
+        </Layout>
       </div>
     );
   }
 }
 
-export default connect()(App);
+export default App;

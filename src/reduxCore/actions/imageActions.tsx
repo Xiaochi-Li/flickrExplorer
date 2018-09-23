@@ -34,7 +34,6 @@ export const handleFetchImages = (dispatch: Dispatch) => {
     }
   )
     .then(response => {
-      console.log(response);
       dispatch(fetchImages(response.data.photos.photo))
     })
     .catch(error => {

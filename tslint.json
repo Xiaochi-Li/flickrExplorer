@@ -12,6 +12,7 @@
     ]
   },
   "rules": {
+    "no-empty-interface": false,
     "object-literal-sort-keys": false,
     "no-console": [
       true,
