@@ -4,5 +4,5 @@ import thunk from 'redux-thunk'
 
 
 export default composeWithDevTools(
-  applyMiddleware(thunk),
+  applyMiddleware(thunk)
 )

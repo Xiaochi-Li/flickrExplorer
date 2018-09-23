@@ -23,7 +23,8 @@ const SingleImage: React.SFC<InterfaceSingleImage> = (props) => {
       })
     }
     return null;
-  }
+  };
+
   return (
     <Col span={20}>
       <Card style={{}}

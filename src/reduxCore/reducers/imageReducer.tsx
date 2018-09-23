@@ -2,36 +2,35 @@ import {imageType} from "../../DataType/DataType";
 import {FETCH_IMAGES, TOGGLE_LIKE} from "../actions/imageActions";
 
 // TODO action type
+/*
+ *
+ */
 export default function imagesReducer(state = {images: []}, action: any) {
   switch (action.type) {
-    // COMENT
+
     case FETCH_IMAGES:
       const {images} = action;
       return {
         ...state,
         images: extractImagesInfo(images)
       };
-    // COMENT
+
     case TOGGLE_LIKE:
-      const newImages = state.images.map((image: imageType) => {
-        if (image.id === action.id) {
-          return {
-            ...image,
-            isLiked: !image.isLiked,
-          }
-        }
-        return image;
-      });
+      // TODO try find other way of doing toogle, cost too much to loop over all list to find one.
+      const newImages = state.images.map(
+        (image) => toogleImageLike(image, action.id)
+      );
       return {
         ...state,
         images: [...newImages]
-      }
+      };
+
     default:
       return {...state};
   }
 };
 
-function extractImagesInfo(images: any) {
+const extractImagesInfo = (images: any) => {
   const extractedImages = images.map((image: any) => {
     const {
       id,
@@ -56,8 +55,19 @@ function extractImagesInfo(images: any) {
     }
   });
   return extractedImages;
-}
+};
 
-function extractTags(tags: string) {
+const extractTags = (tags: string) => {
   return tags.split(" ");
-}
+};
+
+// TODO method needed refactor, cost too much to loop over all list to find one.
+const toogleImageLike = (image: imageType, toggoledID: string) => {
+  if (image.id === toggoledID) {
+    return {
+      ...image,
+      isLiked: !image.isLiked,
+    }
+  }
+  return image;
+};

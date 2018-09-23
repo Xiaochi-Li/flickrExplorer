@@ -6,7 +6,6 @@ import {Card, Col, Icon, Row} from "antd";
 import {imageType} from "../../DataType/DataType";
 import {toggleLike} from "../../reduxCore/actions/imageActions";
 import {selectImage} from "../../reduxCore/actions/userAction";
-// import {Dispatch} from "redux";
 
 const {Meta} = Card;
 
@@ -23,13 +22,24 @@ const Images: React.SFC<InterfaceImages> = (props) => {
   const renderImageCards = (images: imageType[]) => {
     return images.map((image: imageType) => {
 
+      /*
+       * a helper function handles react click event,
+       * doing so avoid inline binding in JSX code,
+       * witch may have performance issue
+       */
       const clickLikeButton = () => {
         props.clickLikeButton(image.id);
       };
 
+      /*
+       * a helper function handles react click event,
+       * doing so avoid inline binding in JSX code,
+       * witch may have performance issue
+       */
       const clickOnImage = () => {
         props.clickOnImage(image.id)
       };
+
       return (
         <Col key={image.id}>
           <Link to={`images/${image.id}`}>
@@ -61,7 +71,6 @@ const Images: React.SFC<InterfaceImages> = (props) => {
   )
 };
 
-// TODO define state shape
 /**
  * map basic images data from state to props. Image list is sorted decentding on view
  * numbers.
@@ -69,6 +78,7 @@ const Images: React.SFC<InterfaceImages> = (props) => {
  * @param {} state redux state
  * @return {}
  */
+// TODO define state shape
 const mapStateToProps = (state: any) => {
   const images = state.imagesReducer.images.map((image: imageType) => {
     const {
@@ -90,6 +100,11 @@ const mapStateToProps = (state: any) => {
   return {images}
 };
 
+/**
+ * map rudux action functions as props to react component
+ * @param { dispatch } dispatch function
+ * @return { action functions }
+ */
 // TODO dispatch type
 const mapDispatchToProps = (dispatch: any) => {
   return ({
