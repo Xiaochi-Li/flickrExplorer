@@ -10,6 +10,7 @@ import {
 } from "../../utils/UrlConstant";
 
 export const FETCH_IMAGES = 'FETCH_IMAGES';
+export const TOGGLE_LIKE = 'TOGGLE_LIKE';
 
 // TODO specify images type
 export const fetchImages = (images: any) => {
@@ -40,3 +41,17 @@ export const handleFetchImages = (dispatch: Dispatch) => {
       throw(error);
     })
 };
+
+function toggleLike(id: string,) {
+  return {
+    type: TOGGLE_LIKE,
+    id
+  }
+}
+
+export function handlleToggleLike(id: string) {
+  //TODO dispatch type.
+  return (dispatch: any,) => {
+    dispatch(toggleLike(id));
+  }
+}
