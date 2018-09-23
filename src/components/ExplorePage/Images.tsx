@@ -1,40 +1,53 @@
 import * as React from 'react';
 
-import {Card, Col, Row} from "antd";
+import {Card, Col, Icon, Row} from "antd";
 import {connect} from "react-redux";
 import {imageType} from "../../DataType/DataType";
+import {toggleLike} from "../../reduxCore/actions/imageActions";
+// import {Dispatch} from "redux";
 
 const {Meta} = Card;
 
 interface InterfaceImages {
   images: any;
+  clickLikeButton: (imageID: string) => void
 }
 
-// TODO ragulr images type
-const renderImageCards = (images: imageType[]) => {
-  return images.map((image: imageType) => {
-    return (<Col key={image.id}>
-      <Card
-        hoverable={true}
-        style={{margin:16}}
-        cover={<img alt="example" src={image.imageUrlSmall}/>}
-      >
-        <Meta
-          title={image.title}
-          description = {`Views: ${image.views}`}
-        />
-      </Card>
-    </Col>)
-  })
-};
 
 const Images: React.SFC<InterfaceImages> = (props) => {
+
+  // TODO ragulr images type
+  const renderImageCards = (images: imageType[]) => {
+    return images.map((image: imageType) => {
+      const clickLikeButton = () => {
+        props.clickLikeButton(image.id);
+      };
+      return (<Col key={image.id}>
+        <Card
+          hoverable={true}
+          style={{margin: 16}}
+          cover={<img alt="example" src={image.imageUrlSmall}/>}
+        >
+          <Meta
+            title={image.title}
+            description={`Views: ${image.views}`}
+          />
+          <a onClick={clickLikeButton}>
+            {image.isLiked ?
+              <Icon type="heart" theme="filled" style={{color: "#eb2f96"}}/> :
+              <Icon type="heart" theme="twoTone" twoToneColor="#eb2f96"/>}
+          </a>
+        </Card>
+      </Col>)
+    })
+  };
+
   return (
     <Row type="flex" justify="center" align="top">
       {renderImageCards(props.images)}
     </Row>
   )
-}
+};
 
 // TODO define state shape
 /**
@@ -65,4 +78,13 @@ const mapStateToProps = (state: any) => {
   return {images}
 };
 
-export default connect(mapStateToProps)(Images)
+// TODO dispatch type
+const mapDispatchToProps = (dispatch:any) => {
+  return ({
+    clickLikeButton: (imageID: string) => {
+      dispatch(toggleLike(imageID))
+    }
+  })
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Images)

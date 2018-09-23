@@ -12,7 +12,6 @@ import {
 export const FETCH_IMAGES = 'FETCH_IMAGES';
 export const TOGGLE_LIKE = 'TOGGLE_LIKE';
 
-// TODO specify images type
 export const fetchImages = (images: any) => {
   return {
     type: FETCH_IMAGES,
@@ -42,16 +41,17 @@ export const handleFetchImages = (dispatch: Dispatch) => {
     })
 };
 
-function toggleLike(id: string,) {
+export const toggleLike = (id: string) => {
+  console.log(id);
   return {
     type: TOGGLE_LIKE,
     id
   }
-}
+};
 
-export function handlleToggleLike(id: string) {
-  //TODO dispatch type.
-  return (dispatch: any,) => {
-    dispatch(toggleLike(id));
-  }
-}
+// export function handlleToggleLike(id: string) {
+//   // TODO dispatch type.
+//   return (dispatch: Dispatch) => {
+//     dispatch(toggleLike(id));
+//   }
+// }

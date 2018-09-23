@@ -1,5 +1,5 @@
-import {FETCH_IMAGES, TOGGLE_LIKE} from "../actions/imageActions";
 import {imageType} from "../../DataType/DataType";
+import {FETCH_IMAGES, TOGGLE_LIKE} from "../actions/imageActions";
 
 export default function imagesReducer(state = {images: []}, action: any) {
   switch (action.type) {
@@ -48,7 +48,6 @@ function extractImagesInfo(images: any) {
       title,
       views: Number(views),
       description: description._content,
-      isLiked: false,
       imageUrlSmall: url_n,
       imageUrlLarge: url_c,
       tags: extractTags(tags),
