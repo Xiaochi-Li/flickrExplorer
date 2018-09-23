@@ -5,13 +5,16 @@ import {Link} from 'react-router-dom'
 import {Card, Col, Icon, Row} from "antd";
 import {imageType} from "../../DataType/DataType";
 import {toggleLike} from "../../reduxCore/actions/imageActions";
+import {selectImage} from "../../reduxCore/actions/userAction";
 // import {Dispatch} from "redux";
 
 const {Meta} = Card;
 
 interface InterfaceImages {
   images: any;
-  clickLikeButton: (imageID: string) => void
+
+  clickLikeButton: (imageID: string) => void;
+  clickOnImage: (imageID: string) => void
 }
 
 const Images: React.SFC<InterfaceImages> = (props) => {
@@ -19,26 +22,32 @@ const Images: React.SFC<InterfaceImages> = (props) => {
   // TODO ragulr images type
   const renderImageCards = (images: imageType[]) => {
     return images.map((image: imageType) => {
+
       const clickLikeButton = () => {
         props.clickLikeButton(image.id);
+      };
+
+      const clickOnImage = () => {
+        props.clickOnImage(image.id)
       };
       return (
         <Col key={image.id}>
           <Link to={`images/${image.id}`}>
             <Card
+              onClick={clickOnImage}
               hoverable={true}
               style={{margin: 16}}
-              cover={<img alt="example" src={image.imageUrlSmall}/>}
+              cover={<img alt={image.title} src={image.imageUrlSmall}/>}
             >
               <Meta
                 title={image.title}
                 description={`Views: ${image.views}`}
               />
-              <a onClick={clickLikeButton}>
+              <div onClick={clickLikeButton}>
                 {image.isLiked ?
                   <Icon type="heart" theme="filled" style={{color: "#eb2f96"}}/> :
                   <Icon type="heart" theme="twoTone" twoToneColor="#eb2f96"/>}
-              </a>
+              </div>
             </Card>
           </Link>
         </Col>)
@@ -86,6 +95,9 @@ const mapDispatchToProps = (dispatch: any) => {
   return ({
     clickLikeButton: (imageID: string) => {
       dispatch(toggleLike(imageID))
+    },
+    clickOnImage: (imageID: string) => {
+      dispatch(selectImage(imageID))
     }
   })
 };

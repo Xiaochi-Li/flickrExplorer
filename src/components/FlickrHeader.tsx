@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 import {Layout, Menu} from 'antd';
+import {Link} from "react-router-dom";
 
 const {Header} = Layout;
 
@@ -16,7 +17,9 @@ export const FlickrHeader: React.SFC<InterfaceFlickrHeader> = (props) => {
         defaultSelectedKeys={['1']}
         style={{lineHeight: '64px'}}
       >
-        <Menu.Item key="1">Explore</Menu.Item>
+        <Menu.Item key="1">
+          <Link to='/'>Explore</Link>
+        </Menu.Item>
         <Menu.Item key="2">Favorite</Menu.Item>
       </Menu>
     </Header>
