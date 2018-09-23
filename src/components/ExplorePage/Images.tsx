@@ -1,7 +1,8 @@
 import * as React from 'react';
+import {connect} from "react-redux";
+import {Link} from 'react-router-dom'
 
 import {Card, Col, Icon, Row} from "antd";
-import {connect} from "react-redux";
 import {imageType} from "../../DataType/DataType";
 import {toggleLike} from "../../reduxCore/actions/imageActions";
 // import {Dispatch} from "redux";
@@ -13,7 +14,6 @@ interface InterfaceImages {
   clickLikeButton: (imageID: string) => void
 }
 
-
 const Images: React.SFC<InterfaceImages> = (props) => {
 
   // TODO ragulr images type
@@ -22,23 +22,26 @@ const Images: React.SFC<InterfaceImages> = (props) => {
       const clickLikeButton = () => {
         props.clickLikeButton(image.id);
       };
-      return (<Col key={image.id}>
-        <Card
-          hoverable={true}
-          style={{margin: 16}}
-          cover={<img alt="example" src={image.imageUrlSmall}/>}
-        >
-          <Meta
-            title={image.title}
-            description={`Views: ${image.views}`}
-          />
-          <a onClick={clickLikeButton}>
-            {image.isLiked ?
-              <Icon type="heart" theme="filled" style={{color: "#eb2f96"}}/> :
-              <Icon type="heart" theme="twoTone" twoToneColor="#eb2f96"/>}
-          </a>
-        </Card>
-      </Col>)
+      return (
+        <Col key={image.id}>
+          <Link to={`images/${image.id}`}>
+            <Card
+              hoverable={true}
+              style={{margin: 16}}
+              cover={<img alt="example" src={image.imageUrlSmall}/>}
+            >
+              <Meta
+                title={image.title}
+                description={`Views: ${image.views}`}
+              />
+              <a onClick={clickLikeButton}>
+                {image.isLiked ?
+                  <Icon type="heart" theme="filled" style={{color: "#eb2f96"}}/> :
+                  <Icon type="heart" theme="twoTone" twoToneColor="#eb2f96"/>}
+              </a>
+            </Card>
+          </Link>
+        </Col>)
     })
   };
 
@@ -79,7 +82,7 @@ const mapStateToProps = (state: any) => {
 };
 
 // TODO dispatch type
-const mapDispatchToProps = (dispatch:any) => {
+const mapDispatchToProps = (dispatch: any) => {
   return ({
     clickLikeButton: (imageID: string) => {
       dispatch(toggleLike(imageID))

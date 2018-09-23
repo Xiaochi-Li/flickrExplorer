@@ -1,6 +1,7 @@
 import * as React from 'react';
+import {BrowserRouter as Router} from 'react-router-dom'
 
-import { Layout } from 'antd';
+import {Layout} from 'antd';
 
 import {ExplorePage} from "./ExplorePage/ExplorePage";
 import {FlickrHeader} from "./FlickrHeader";
@@ -10,12 +11,14 @@ import {FlickrHeader} from "./FlickrHeader";
 class App extends React.Component {
   public render() {
     return (
-      <div className="App">
-        <Layout>
-          <FlickrHeader/>
-        <ExplorePage/>
-        </Layout>
-      </div>
+      <Router>
+        <div className="App">
+          <Layout>
+            <FlickrHeader/>
+            <ExplorePage/>
+          </Layout>
+        </div>
+      </Router>
     );
   }
 }

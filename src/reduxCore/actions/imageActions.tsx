@@ -42,16 +42,8 @@ export const handleFetchImages = (dispatch: Dispatch) => {
 };
 
 export const toggleLike = (id: string) => {
-  console.log(id);
   return {
     type: TOGGLE_LIKE,
     id
   }
 };
-
-// export function handlleToggleLike(id: string) {
-//   // TODO dispatch type.
-//   return (dispatch: Dispatch) => {
-//     dispatch(toggleLike(id));
-//   }
-// }

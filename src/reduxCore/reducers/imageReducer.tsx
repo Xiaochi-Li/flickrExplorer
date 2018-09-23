@@ -1,13 +1,15 @@
 import {imageType} from "../../DataType/DataType";
 import {FETCH_IMAGES, TOGGLE_LIKE} from "../actions/imageActions";
 
+// TODO action type
 export default function imagesReducer(state = {images: []}, action: any) {
   switch (action.type) {
     // COMENT
     case FETCH_IMAGES:
       const {images} = action;
       return {
-        images: extractImagesInfo(images),
+        ...state,
+        images: extractImagesInfo(images)
       };
     // COMENT
     case TOGGLE_LIKE:
