@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { connect } from "react-redux";
 
-import {InterfaceDispatchFunctions} from "../DataType/shared";
+// import {InterfaceDispatchFunctions} from "../DataType/imageDataType";
 
 
-import { handleFetchImages} from "../reduxCore/actions/shared";
+// import { handleFetchImages} from "../reduxCore/actions/imageActions";
 
 // @ts-ignore
-class App extends React.Component <InterfaceDispatchFunctions>{
-  public componentWillMount(){
-    this.props.dispatch(handleFetchImages);
-  }
+class App extends React.Component {
+  // public componentWillMount(){
+  //   this.props.dispatch(handleFetchImages);
+  // }
 
   public render() {
     return (

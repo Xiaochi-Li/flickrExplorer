@@ -4,9 +4,10 @@ import {Dispatch} from 'redux';
 import {
   API_KEY,
   API_URL,
+  EXTRA_IMAGE_PARAMETERS,
   IMAGE_PER_PAGE,
   REQUEST_METHOD
-} from "../../utils/UrlBuilder";
+} from "../../utils/UrlConstant";
 
 export const FETCH_IMAGES = 'FETCH_IMAGES';
 
@@ -25,7 +26,7 @@ export const handleFetchImages = (dispatch: Dispatch) => {
         method: REQUEST_METHOD,
         api_key: API_KEY,
         format: 'json',
-        extras: 'description,url_c,url_n,tags,views,date_taken',
+        extras: EXTRA_IMAGE_PARAMETERS,
         per_page: IMAGE_PER_PAGE,
         page: 1,
         nojsoncallback: 1,

@@ -6,12 +6,12 @@ import registerServiceWorker from './registerServiceWorker';
 import {Provider} from 'react-redux';
 import {createStore} from 'redux';
 
-// import reducer from './core/reducers'
-
+import {handleFetchImages} from "./reduxCore/actions/imageActions";
 import middleware from './reduxCore/middlewares'
 import reducers from './reduxCore/reducers';
 
 const store = createStore(reducers, middleware);
+store.dispatch(handleFetchImages);
 ReactDOM.render(
   <Provider store={store}>
     <App/>
