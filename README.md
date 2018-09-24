@@ -13,12 +13,16 @@ which in turn decrease maintenance cost and performance issue.
 ### Run guide
 1. clone or download the project
 2. cd the project.
-3. use `yarn start` in terminal.
+3. run `yarn i`
+4. use `yarn start` in terminal.
 
-### Run guide
+### build guide
 2. cd the project.
 3. use `yarn build` in terminal.
 
+### deploy guid
+1. build the project
 
-## future features
+### future features
 1. implement the feature which allows users to only view images they likes.
+
