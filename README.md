@@ -23,6 +23,10 @@ which in turn decrease maintenance cost and performance issue.
 ### deploy guid
 1. build the project
 
+### future improvements
+1. use redux container and selector pattern to completely separate redux and 
+react.js code
+
 ### future features
 1. implement the feature which allows users to only view images they likes.
 
