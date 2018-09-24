@@ -1,6 +1,11 @@
 import {SELECT_IMAGE} from "../actions/userAction";
 
-// TODO action type
+/**
+ * reducer for all user related actions
+ * @param state
+ * @param action
+ */
+
 export default function userReducer(state = {}, action: any) {
   switch (action.type) {
 

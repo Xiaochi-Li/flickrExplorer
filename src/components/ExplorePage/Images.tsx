@@ -10,15 +10,19 @@ import {selectImage} from "../../reduxCore/actions/userAction";
 const {Meta} = Card;
 
 interface InterfaceImages {
-  images: any;
+  /** a list of images data*/
+  images: imageType[];
 
+  /** dispatch function for like and unlike image */
   clickLikeButton: (imageID: string) => void;
+  /** dispatch function for choosing image for detailed view */
   clickOnImage: (imageID: string) => void
 }
 
+/**
+ * component display a collection of images
+ */
 const Images: React.SFC<InterfaceImages> = (props) => {
-
-  // TODO ragulr images type
   const renderImageCards = (images: imageType[]) => {
     return images.map((image: imageType) => {
 
@@ -50,7 +54,7 @@ const Images: React.SFC<InterfaceImages> = (props) => {
               cover={
                 <img
                   alt={image.title}
-                  style={{height: 200, width: 300, objectFit:'cover'}}
+                  style={{height: 200, width: 300, objectFit: 'cover'}}
                   src={image.imageUrlSmall}
                 />}
             >
@@ -83,7 +87,6 @@ const Images: React.SFC<InterfaceImages> = (props) => {
  * @param {} state redux state
  * @return {}
  */
-// TODO define state shape
 const mapStateToProps = (state: any) => {
   const images = state.imagesReducer.images.map((image: imageType) => {
     const {

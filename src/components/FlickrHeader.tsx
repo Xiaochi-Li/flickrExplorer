@@ -8,6 +8,9 @@ const {Header} = Layout;
 interface InterfaceFlickrHeader {
 }
 
+/**
+ * Page Header bar
+ */
 export const FlickrHeader: React.SFC<InterfaceFlickrHeader> = (props) => {
   return (
     <Header>
@@ -24,4 +27,4 @@ export const FlickrHeader: React.SFC<InterfaceFlickrHeader> = (props) => {
       </Menu>
     </Header>
   )
-}
+};

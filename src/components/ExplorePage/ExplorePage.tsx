@@ -10,6 +10,7 @@ const {Content} = Layout;
 interface InterfaceExplorePage {
 }
 
+
 export const ExplorePage: React.SFC<InterfaceExplorePage> = (props: any) => {
   return (
     <Content style={{padding: '0 50px'}}>

@@ -11,6 +11,9 @@ import {handleFetchImages} from "./reduxCore/actions/imageActions";
 import middleware from './reduxCore/middlewares'
 import reducers from './reduxCore/reducers';
 
+/**
+ * Rudux store
+ */
 const store = createStore(reducers, middleware);
 store.dispatch(handleFetchImages);
 ReactDOM.render(

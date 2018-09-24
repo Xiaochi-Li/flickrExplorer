@@ -5,8 +5,6 @@ import {Layout} from 'antd';
 import {ExplorePage} from "./ExplorePage/ExplorePage";
 import {FlickrHeader} from "./FlickrHeader";
 
-
-// TODO define type or refactor to SFC
 class App extends React.Component {
   public render() {
     return (

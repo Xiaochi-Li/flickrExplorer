@@ -4,14 +4,21 @@ import {Dispatch} from 'redux';
 import {
   API_KEY,
   API_URL,
+  DATE_OF_IMAGES,
   EXTRA_IMAGE_PARAMETERS,
   IMAGE_PER_PAGE,
   REQUEST_METHOD
 } from "../../utils/UrlConstant";
 
+// action type const
 export const FETCH_IMAGES = 'FETCH_IMAGES';
+// action type const
 export const TOGGLE_LIKE = 'TOGGLE_LIKE';
 
+/**
+ * action creator for FETCH_IMAGES
+ * @param images
+ */
 export const fetchImages = (images: any) => {
   return {
     type: FETCH_IMAGES,
@@ -19,7 +26,21 @@ export const fetchImages = (images: any) => {
   }
 };
 
-// helper function make api call to get all images.
+/**
+ * action creator for TOGGLE_LIKE
+ * @param id of the image that user just toggled like.
+ */
+export const toggleLike = (id: string) => {
+  return {
+    type: TOGGLE_LIKE,
+    id
+  }
+};
+
+/**
+ * helper function fetch all initial images data
+ * @param dispatch
+ */
 export const handleFetchImages = (dispatch: Dispatch) => {
   return axios.get(API_URL, {
       params: {
@@ -28,6 +49,7 @@ export const handleFetchImages = (dispatch: Dispatch) => {
         format: 'json',
         extras: EXTRA_IMAGE_PARAMETERS,
         per_page: IMAGE_PER_PAGE,
+        date: DATE_OF_IMAGES,
         page: 1,
         nojsoncallback: 1,
       }
@@ -39,11 +61,4 @@ export const handleFetchImages = (dispatch: Dispatch) => {
     .catch(error => {
       throw(error);
     })
-};
-
-export const toggleLike = (id: string) => {
-  return {
-    type: TOGGLE_LIKE,
-    id
-  }
 };
