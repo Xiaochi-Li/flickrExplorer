@@ -46,8 +46,13 @@ const Images: React.SFC<InterfaceImages> = (props) => {
             <Card
               onClick={clickOnImage}
               hoverable={true}
-              style={{margin: 16}}
-              cover={<img alt={image.title} src={image.imageUrlSmall}/>}
+              style={{margin: 16, width: 300}}
+              cover={
+                <img
+                  alt={image.title}
+                  style={{height: 200, width: 300, objectFit:'cover'}}
+                  src={image.imageUrlSmall}
+                />}
             >
               <Meta
                 title={image.title}

@@ -26,9 +26,14 @@ const SingleImage: React.SFC<InterfaceSingleImage> = (props) => {
   };
 
   return (
-    <Col span={20}>
-      <Card style={{}}
-            cover={<img alt={title} src={imageUrlLarge}/>}
+    <Col span={24}>
+      <Card style={{width: '100%'}}
+            cover={
+              <img
+                alt={title}
+                style={{width: '100%', objectFit: 'cover'}}
+                src={imageUrlLarge}
+              />}
       >
         <div>
           {renderTags()}
