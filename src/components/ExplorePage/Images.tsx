@@ -10,10 +10,13 @@ import {selectImage} from "../../reduxCore/actions/userAction";
 const {Meta} = Card;
 
 interface InterfaceImages {
-  /** a list of images data*/
+  /**
+   * a list of images data
+   */
   images: imageType[];
-
-  /** dispatch function for like and unlike image */
+  /**
+   * dispatch function for like and unlike image
+   */
   clickLikeButton: (imageID: string) => void;
   /** dispatch function for choosing image for detailed view */
   clickOnImage: (imageID: string) => void
